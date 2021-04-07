@@ -58,21 +58,24 @@ def decide_attacks(clusters, percent_attacked=0.30):
       _dict[str(i).zfill(4)]['ATTACK_END'] = "2018-03-5 14:00:00-05:00"
       _dict[str(i).zfill(4)]['ATTACK_MODE'] = "deductive"
 
-  pprint(_dict)
   return _dict
 
 if __name__ == '__main__':
 
   clusters = read_pickle(data_dir + '/clusters.pkl')
 
-  _dict = {}
-  for i, c in enumerate(clusters):
-      _dict[str(i).zfill(4)] = c
+  # _dict = {}
+  # for i, c in enumerate(clusters):
+  #     _dict[str(i).zfill(4)] = c
+
+  _dict = decide_attacks(clusters)
   _dict['task_type'] = 'GENERATE_MEANS'
   _dict['granularity'] = 10
   pulsar_publish(_dict)
 
-  _dict = decide_attacks(clusters)
+  pprint(_dict)
   _dict['task_type'] = 'GENERATE_ATTACK_DATA'
   _dict['granularity'] = 10
+
+  pprint(_dict)
   pulsar_publish(_dict)
