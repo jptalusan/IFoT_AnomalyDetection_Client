@@ -1,6 +1,6 @@
 import pulsar
 import os
-import pickle
+import pickle5 as pickle
 import json
 import itertools
 import math

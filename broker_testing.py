@@ -124,3 +124,14 @@ if __name__ == '__main__':
     ANOMALY_DETECT_TOGGLE_ATTACK(worker)
   # time.sleep(120)
   # ANOMALY_DETECT_TOGGLE_SENDING(worker)
+
+  WORKER_HOST = '163.221.68.248'
+  for i in range(3):
+    WORKER_PORT = 6000 + i # RSU-0000
+    context = zmq.Context()
+    worker = context.socket(zmq.DEALER)
+    worker.identity = encode('163.221.68.230:5999')
+    worker.connect(f'tcp://{WORKER_HOST}:{WORKER_PORT}')
+    ANOMALY_DETECT_TOGGLE_SENDING(worker)
+    ANOMALY_DETECT_SEND_MEANS(worker)
+    ANOMALY_DETECT_TOGGLE_ATTACK(worker)
