@@ -37,6 +37,6 @@ This thing is meant to be a unit test for it.
 
 ## Cluster attack test
 * `test_cluster_attack.py`: I think this is not used anymore
-* `test_ping.py`: I think this is not used anymore
+* `test_ping.py`: This is a basic test file for simple single ZMQ messaging.
 * `test_base.py`: I think this is not used anymore
 I won't commit these until I know that I still use them.
